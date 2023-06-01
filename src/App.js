@@ -4,8 +4,8 @@ import Dashboard from "./components/Dashboard.js";
 import "./App.css";
 
 export default function App() {
-  sessionStorage.removeItem("user");
-  sessionStorage.removeItem("emails");
+  // sessionStorage.removeItem("user");
+  // sessionStorage.removeItem("emails");
   const [user, setUser] = useState(
     JSON.parse(sessionStorage.getItem("user")) !== null
       ? JSON.parse(sessionStorage.getItem("user"))

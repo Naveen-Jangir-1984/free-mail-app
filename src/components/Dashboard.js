@@ -6,6 +6,13 @@ const Dashboard = ({
   handleMailClick,
   handleDeleteButton,
 }) => {
+  const selectionColor = "lightcoral";
+  const selectionStyle = {
+    backgroundColor: selectionColor,
+    padding: "0 5px 2px 5px",
+    borderRadius: "5px",
+    boxSizing: "border-box",
+  }
   return (
     <div className="Dashboard">
       <div className="userinfo">
@@ -29,7 +36,7 @@ const Dashboard = ({
                   : "normal",
                 backgroundColor:
                   user.lastSelectedCategory === property
-                    ? "yellow"
+                    ? selectionColor
                     : "transparent",
                 borderRadius: "5px",
                 padding: "0 5px 2px 5px",
@@ -53,7 +60,7 @@ const Dashboard = ({
                   key={index}
                   style={{
                     fontWeight: mail.isRead ? "normal" : "bold",
-                    backgroundColor: mail.isSelected ? "yellow" : "transparent",
+                    backgroundColor: mail.isSelected ? selectionColor : "transparent",
                     borderRadius: "5px",
                     padding: "0 5px 2px 5px",
                     boxSizing: "border-box",
@@ -87,12 +94,7 @@ const Dashboard = ({
                           <b>from </b>
                         </span>
                         <span
-                          style={{
-                            backgroundColor: "yellow",
-                            padding: "0 5px 2px 5px",
-                            borderRadius: "5px",
-                            boxSizing: "border-box",
-                          }}
+                          style={selectionStyle}
                         >
                           {mail.from.name}
                         </span>
@@ -104,12 +106,7 @@ const Dashboard = ({
                         {mail.to.map((item, index) => (
                           <span key={index}>
                             <span
-                              style={{
-                                backgroundColor: "yellow",
-                                padding: "0 5px 2px 5px",
-                                borderRadius: "5px",
-                                boxSizing: "border-box",
-                              }}
+                              style={selectionStyle}
                             >
                               <span>{item.name}</span>{" "}
                               <span style={{ fontSize: "12px" }}>
@@ -127,12 +124,7 @@ const Dashboard = ({
                           {mail.cc.map((item, index) => (
                             <span key={index}>
                               <span
-                                style={{
-                                  backgroundColor: "yellow",
-                                  padding: "0 5px 2px 5px",
-                                  borderRadius: "5px",
-                                  boxSizing: "border-box",
-                                }}
+                                style={selectionStyle}
                               >
                                 <span>{item.name}</span>{" "}
                                 <span style={{ fontSize: "12px" }}>
@@ -153,12 +145,7 @@ const Dashboard = ({
                           {mail.bcc.map((item, index) => (
                             <span key={index}>
                               <span
-                                style={{
-                                  backgroundColor: "yellow",
-                                  padding: "0 5px 2px 5px",
-                                  borderRadius: "5px",
-                                  boxSizing: "border-box",
-                                }}
+                                style={selectionStyle}
                               >
                                 <span>{item.name}</span>{" "}
                                 <span style={{ fontSize: "12px" }}>
@@ -176,23 +163,13 @@ const Dashboard = ({
                           <b>subject</b>
                         </span>{" "}
                         <span
-                          style={{
-                            backgroundColor: "yellow",
-                            padding: "0 5px 2px 5px",
-                            borderRadius: "5px",
-                            boxSizing: "border-box",
-                          }}
+                          style={selectionStyle}
                         >
                           {mail.subject}
                         </span>
                       </div>
                       <div
-                        style={{
-                          backgroundColor: "yellow",
-                          padding: "0 5px 2px 5px",
-                          borderRadius: "5px",
-                          boxSizing: "border-box",
-                        }}
+                        style={selectionStyle}
                       >
                         {mail.body}
                       </div>
