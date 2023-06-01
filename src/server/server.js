@@ -1,16 +1,17 @@
-const fs = require("fs");
-const bodyParser = require("body-parser");
-const express = require("express");
-const cors = require("cors");
+import { readFile, writeFileSync } from "fs";
+import bodyparser from 'body-parser';
+const { urlencoded, json } = bodyparser;
+import express from "express";
+import cors from "cors";
 const port = 8080;
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(urlencoded({ extended: true }));
+app.use(json());
 
 app.post("/login", (req, res) => {
-  fs.readFile("../database/users.json", "utf-8", (err, data) => {
+  readFile("../database/users.json", "utf-8", (err, data) => {
     if (err) throw err;
 
     let id = req.body.id;
@@ -26,12 +27,12 @@ app.post("/login", (req, res) => {
       }
       return user;
     });
-    fs.writeFileSync(
+    writeFileSync(
       "../database/users.json",
       JSON.stringify({ users: users }, null, 2)
     );
 
-    fs.readFile("../database/emails.json", "utf-8", (err, data) => {
+    readFile("../database/emails.json", "utf-8", (err, data) => {
       if (err) throw err;
 
       var data = JSON.parse(data);
@@ -55,7 +56,7 @@ app.post("/login", (req, res) => {
   });
 });
 app.post("/logout", (req, res) => {
-  fs.readFile("../database/users.json", "utf-8", (err, data) => {
+  readFile("../database/users.json", "utf-8", (err, data) => {
     if (err) throw err;
 
     const id = req.body.id;
@@ -75,7 +76,7 @@ app.post("/logout", (req, res) => {
       }
       return user;
     });
-    fs.writeFileSync(
+    writeFileSync(
       "../database/users.json",
       JSON.stringify({ users: users }, null, 2)
     );
@@ -83,7 +84,7 @@ app.post("/logout", (req, res) => {
   });
 });
 app.post("/updateCategory", (req, res) => {
-  fs.readFile("../database/users.json", "utf-8", (err, data) => {
+  readFile("../database/users.json", "utf-8", (err, data) => {
     if (err) throw err;
 
     let id = req.body.id;
@@ -97,7 +98,7 @@ app.post("/updateCategory", (req, res) => {
       }
       return user;
     });
-    fs.writeFileSync(
+    writeFileSync(
       "../database/users.json",
       JSON.stringify({ users: users }, null, 2)
     );
@@ -105,7 +106,7 @@ app.post("/updateCategory", (req, res) => {
   });
 });
 app.post("/updateEmail", (req, res) => {
-  fs.readFile("../database/users.json", "utf-8", (err, data) => {
+  readFile("../database/users.json", "utf-8", (err, data) => {
     if (err) throw err;
 
     let id = req.body.id;
@@ -118,7 +119,7 @@ app.post("/updateEmail", (req, res) => {
       (user) => user.id === id && user.password === password
     );
 
-    fs.readFile("../database/emails.json", "utf-8", (err, data) => {
+    readFile("../database/emails.json", "utf-8", (err, data) => {
       if (err) throw err;
 
       var data = JSON.parse(data);
@@ -145,7 +146,7 @@ app.post("/updateEmail", (req, res) => {
           return mail;
         }),
       };
-      fs.writeFileSync(
+      writeFileSync(
         "../database/emails.json",
         JSON.stringify(emails, null, 2)
       );
@@ -162,7 +163,7 @@ app.post("/updateEmail", (req, res) => {
   });
 });
 app.post("/deleteEmail", (req, res) => {
-  fs.readFile("../database/users.json", "utf-8", (err, data) => {
+  readFile("../database/users.json", "utf-8", (err, data) => {
     if (err) throw err;
 
     let id = req.body.id;
@@ -174,7 +175,7 @@ app.post("/deleteEmail", (req, res) => {
       (user) => user.id === id && user.password === password
     );
 
-    fs.readFile("../database/emails.json", "utf-8", (err, data) => {
+    readFile("../database/emails.json", "utf-8", (err, data) => {
       if (err) throw err;
 
       var data = JSON.parse(data);
@@ -182,7 +183,7 @@ app.post("/deleteEmail", (req, res) => {
         inbox: data.inbox.filter((mail) => mail.id !== mail_id),
         sent: data.sent.filter((mail) => mail.id !== mail_id),
       };
-      fs.writeFileSync(
+      writeFileSync(
         "../database/emails.json",
         JSON.stringify(emails, null, 2)
       );
