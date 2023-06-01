@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": "anu",
+      "name": "anita jangir",
+      "email": "anita.jangir@nowhere.com",
+      "password": "anu",
+      "isLogged": false,
+      "lastSelectedCategory": "inbox"
+    },
+    {
+      "id": "monu",
+      "name": "naveen jangir",
+      "email": "naveen.jangir@nowhere.com",
+      "password": "monu",
+      "isLogged": false,
+      "lastSelectedCategory": "sent"
+    }
+  ]
+}

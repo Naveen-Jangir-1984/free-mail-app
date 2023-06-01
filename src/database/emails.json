@@ -1,0 +1,159 @@
+{
+  "inbox": [
+    {
+      "id": 1,
+      "to": [
+        {
+          "id": "anu",
+          "name": "anita jangir",
+          "email": "anita.jangir@nowhere.com"
+        }
+      ],
+      "from": {
+        "id": "monu",
+        "name": "naveen jangir",
+        "email": "naveen.jangir@nowhere.com"
+      },
+      "cc": [
+        {
+          "id": "amita",
+          "name": "amita jangir",
+          "email": "amita.jangir@nowhere.com"
+        },
+        {
+          "id": "pawan",
+          "name": "pawan jangir",
+          "email": "pawan.jangir@nowhere.com"
+        }
+      ],
+      "bcc": [],
+      "subject": "email 1",
+      "body": "message 1",
+      "isRead": true,
+      "isSelected": false
+    },
+    {
+      "id": 2,
+      "to": [
+        {
+          "id": "anu",
+          "name": "anita jangir",
+          "email": "anita.jangir@nowhere.com"
+        }
+      ],
+      "from": {
+        "id": "aanu",
+        "name": "ayansh jangir",
+        "email": "ayansh.jangir@nowhere.com"
+      },
+      "cc": [],
+      "bcc": [
+        {
+          "id": "amita",
+          "name": "amita jangir",
+          "email": "amita.jangir@nowhere.com"
+        },
+        {
+          "id": "pawan",
+          "name": "pawan jangir",
+          "email": "pawan.jangir@nowhere.com"
+        }
+      ],
+      "subject": "email 2",
+      "body": "message 2",
+      "isRead": true,
+      "isSelected": true
+    },
+    {
+      "id": 3,
+      "to": [
+        {
+          "id": "anu",
+          "name": "anita jangir",
+          "email": "anita.jangir@nowhere.com"
+        }
+      ],
+      "from": {
+        "id": "aanu",
+        "name": "anay jangir",
+        "email": "anay.jangir@nowhere.com"
+      },
+      "cc": [],
+      "bcc": [],
+      "subject": "email 3",
+      "body": "message 3",
+      "isRead": true,
+      "isSelected": false
+    },
+    {
+      "id": 4,
+      "to": [
+        {
+          "id": "monu",
+          "name": "naveen jangir",
+          "email": "naveen.jangir@nowhere.com"
+        }
+      ],
+      "from": {
+        "id": "dabu",
+        "name": "pawan jangir",
+        "email": "pawan.jangir@nowhere.com"
+      },
+      "cc": [],
+      "bcc": [],
+      "subject": "email 4",
+      "body": "message 4",
+      "isRead": true,
+      "isSelected": false
+    }
+  ],
+  "sent": [
+    {
+      "id": 5,
+      "to": [
+        {
+          "id": "enu",
+          "name": "ayansh jangir",
+          "email": "ayansh.jangir@nowhere.com"
+        }
+      ],
+      "from": {
+        "id": "monu",
+        "name": "naveen jangir",
+        "email": "naveen.jangir@nowhere.com"
+      },
+      "cc": [],
+      "bcc": [],
+      "subject": "email 5",
+      "body": "message 5",
+      "isRead": true,
+      "isSelected": true
+    },
+    {
+      "id": 6,
+      "to": [
+        {
+          "id": "amu",
+          "name": "amita jangir",
+          "email": "amita.jangir@nowhere.com"
+        },
+        {
+          "id": "pawan",
+          "name": "pawan jangir",
+          "email": "pawan.jangir@nowhere.com"
+        }
+      ],
+      "from": {
+        "id": "anu",
+        "name": "anita jangir",
+        "email": "anita.jangir@nowhere.com"
+      },
+      "cc": [],
+      "bcc": [],
+      "subject": "email 6",
+      "body": "message 6",
+      "isRead": true,
+      "isSelected": false
+    }
+  ]
+}
