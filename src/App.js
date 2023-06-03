@@ -5,9 +5,9 @@ import "./App.css";
 import Banner from "./components/Banner.js";
 
 export default function App() {
-  // sessionStorage.removeItem("user");
-  // sessionStorage.removeItem("emails");
-  const selectionColor = "lightcoral";
+  sessionStorage.removeItem("user");
+  sessionStorage.removeItem("emails");
+  const selectionColor = "yellow";
   const [banner, setBanner] = useState(
     {
       display: false,
