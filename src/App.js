@@ -1,22 +1,43 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Login from "./components/Login.js";
 import Dashboard from "./components/Dashboard.js";
 import "./App.css";
+import Banner from "./components/Banner.js";
 
 export default function App() {
   // sessionStorage.removeItem("user");
   // sessionStorage.removeItem("emails");
+  const [banner, setBanner] = useState(
+    {
+      display: false,
+      text: "",
+      color: "",
+      close: false,
+    }
+  );
+  useEffect(() => {
+    fetch("http://localhost:8080/network")
+      .then((res) => res.text())
+      .catch(error => setBanner(
+        {
+          display: true,
+          text: "server unreachable !",
+          color: "coral",
+          close: false,
+        }
+      ));
+  }, [])
   const [user, setUser] = useState(
     JSON.parse(sessionStorage.getItem("user")) !== null
       ? JSON.parse(sessionStorage.getItem("user"))
       : {
-          id: "",
-          name: "",
-          email: "",
-          password: "",
-          isLogged: false,
-          lastSelectedCategory: "",
-        }
+        id: "",
+        name: "",
+        email: "",
+        password: "",
+        isLogged: false,
+        lastSelectedCategory: "",
+      }
   );
   const [error, setError] = useState(false);
   const [emails, setEmails] = useState(
@@ -50,7 +71,13 @@ export default function App() {
           setEmails(data.emails);
           setError(false);
         }
-      });
+      })
+      .catch(error => setBanner({
+        display: true,
+        text: "server unavailable !",
+        color: "coral",
+        close: false,
+      }));
   };
   const handleLogoutButton = () => {
     fetch("http://localhost:8080/logout", {
@@ -75,7 +102,13 @@ export default function App() {
           sessionStorage.removeItem("user");
           sessionStorage.removeItem("emails");
         }
-      });
+      })
+      .catch(error => setBanner({
+        display: true,
+        text: "server unavailable !",
+        color: "coral",
+        close: false,
+      }));
   };
   const handleCategoryClick = (category) => {
     fetch("http://localhost:8080/updateCategory", {
@@ -98,7 +131,13 @@ export default function App() {
             JSON.stringify({ ...user, lastSelectedCategory: category })
           );
         }
-      });
+      })
+      .catch(error => setBanner({
+        display: true,
+        text: "server unavailable !",
+        color: "coral",
+        close: false,
+      }));
   };
   const handleMailClick = (id, category) => {
     fetch("http://localhost:8080/updateEmail", {
@@ -119,7 +158,13 @@ export default function App() {
           setEmails(JSON.parse(data));
           sessionStorage.setItem("emails", JSON.stringify(data));
         }
-      });
+      })
+      .catch(error => setBanner({
+        display: true,
+        text: "server unavailable !",
+        color: "coral",
+        close: false,
+      }));
   };
   const handleDeleteButton = (id) => {
     fetch("http://localhost:8080/deleteEmail", {
@@ -139,8 +184,22 @@ export default function App() {
           setEmails(JSON.parse(data));
           sessionStorage.setItem("emails", JSON.stringify(data));
         }
-      });
+      })
+      .catch(error => setBanner({
+        display: true,
+        text: "server unavailable !",
+        color: "coral",
+        close: false,
+      }));
   };
+  const handleBannerClose = () => {
+    setBanner({
+      display: false,
+      text: "",
+      color: "",
+      close: false,
+    })
+  }
   return (
     <div className="App">
       {user.isLogged ? (
@@ -153,8 +212,9 @@ export default function App() {
           handleDeleteButton={handleDeleteButton}
         />
       ) : (
-        <Login handleLoginButton={handleLoginButton} error={error} />
-      )}
+          <Login handleLoginButton={handleLoginButton} error={error} />
+        )}
+      <Banner banner={banner} handleBannerClose={handleBannerClose} />
     </div>
   );
 }

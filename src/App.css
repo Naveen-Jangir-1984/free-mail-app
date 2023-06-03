@@ -1,11 +1,13 @@
 .App {
   text-align: center;
 }
+
 .Dashboard {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
 }
+
 .userinfo {
   display: flex;
   justify-content: space-between;
@@ -13,12 +15,14 @@
   padding: 0 2px;
   box-sizing: border-box;
 }
+
 .emails {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   font-size: 14px;
 }
+
 .email_category,
 .email_summary,
 .email_details {
@@ -27,6 +31,7 @@
   justify-content: left;
   row-gap: 1vh;
 }
+
 .email_category {
   width: 15vw;
   height: auto;
@@ -35,6 +40,7 @@
   box-sizing: border-box;
   border-radius: 5px;
 }
+
 .email_summary {
   width: 30vw;
   height: auto;
@@ -43,6 +49,7 @@
   box-sizing: border-box;
   border-radius: 5px;
 }
+
 .email_details {
   width: 50vw;
   height: auto;
@@ -51,24 +58,28 @@
   box-sizing: border-box;
   border-radius: 5px;
 }
+
 .email_category div,
 .email_summary div,
 .email_details div {
   text-align: left;
 }
+
 .email_view {
   display: flex;
   flex-direction: column;
   row-gap: 1vh;
 }
+
 .logout {
   outline: none;
   border: none;
-  background-color: transparent;
+  background-color: lightcoral;
   border-radius: 5px;
   padding: 3px 8px;
   box-sizing: border-box;
 }
-.logout:hover {
-  background-color: lightpink;
+
+button {
+  cursor: pointer;
 }

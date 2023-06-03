@@ -1,3 +1,4 @@
+import Categories from "./Categories.js"
 const Dashboard = ({
   user,
   emails,
@@ -25,32 +26,12 @@ const Dashboard = ({
         </button>
       </div>
       <div className="emails">
-        <div className="email_category">
-          {Object.keys(emails).map((property, index) => (
-            <div
-              key={index}
-              style={{
-                fontWeight: emails[property].filter((mail) => !mail.isRead)
-                  .length
-                  ? "bold"
-                  : "normal",
-                backgroundColor:
-                  user.lastSelectedCategory === property
-                    ? selectionColor
-                    : "transparent",
-                borderRadius: "5px",
-                padding: "0 5px 2px 5px",
-                boxSizing: "border-box",
-              }}
-              onClick={() => handleCategoryClick(property)}
-            >
-              {property}
-              {emails[property].filter((mail) => !mail.isRead).length
-                ? ` (${emails[property].filter((mail) => !mail.isRead).length})`
-                : ""}
-            </div>
-          ))}
-        </div>
+        <Categories
+          user={user}
+          emails={emails}
+          selectionColor={selectionColor}
+          handleCategoryClick={handleCategoryClick}
+        />
         <div className="email_summary">
           {Object.keys(emails).map(
             (property) =>
@@ -64,6 +45,7 @@ const Dashboard = ({
                     borderRadius: "5px",
                     padding: "0 5px 2px 5px",
                     boxSizing: "border-box",
+                    cursor: "pointer",
                   }}
                   onClick={() => handleMailClick(mail.id, property)}
                 >
@@ -71,8 +53,8 @@ const Dashboard = ({
                     {property === "inbox"
                       ? mail.from.name
                       : mail.to.length === 1
-                      ? mail.to[0].name
-                      : mail.to.map((item, index) => (
+                        ? mail.to[0].name
+                        : mail.to.map((item, index) => (
                           <span key={index}> {item.name};</span>
                         ))}
                   </div>
@@ -135,8 +117,8 @@ const Dashboard = ({
                           ))}
                         </div>
                       ) : (
-                        ""
-                      )}
+                          ""
+                        )}
                       {mail.bcc.length ? (
                         <div>
                           <span style={{ fontSize: "12px" }}>
@@ -156,8 +138,8 @@ const Dashboard = ({
                           ))}
                         </div>
                       ) : (
-                        ""
-                      )}
+                          ""
+                        )}
                       <div>
                         <span style={{ fontSize: "12px" }}>
                           <b>subject</b>
@@ -176,6 +158,9 @@ const Dashboard = ({
                       <button
                         style={{
                           width: "50px",
+                          border: "none",
+                          borderRadius: "5px",
+                          backgroundColor: selectionColor,
                         }}
                         onClick={() => handleDeleteButton(mail.id)}
                       >

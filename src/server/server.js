@@ -10,6 +10,9 @@ app.use(cors());
 app.use(urlencoded({ extended: true }));
 app.use(json());
 
+app.get("/network", (req, res) => {
+  res.end("success");
+})
 app.post("/login", (req, res) => {
   readFile("../database/users.json", "utf-8", (err, data) => {
     if (err) throw err;
@@ -47,9 +50,9 @@ app.post("/login", (req, res) => {
       res.end(
         user.length
           ? JSON.stringify({
-              user: user[0],
-              emails: emails,
-            })
+            user: user[0],
+            emails: emails,
+          })
           : JSON.stringify({})
       );
     });
