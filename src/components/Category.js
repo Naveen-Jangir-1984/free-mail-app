@@ -1,10 +1,4 @@
-const Category = ({
-  user,
-  emails,
-  property,
-  selectionColor,
-  handleCategoryClick
-}) => {
+const Category = ({ user, emails, property, selectionColor, handleCategoryClick }) => {
   return (
     <div
       style={{

@@ -1,11 +1,6 @@
 import Category from './Category.js'
 
-const Categories = ({
-  user,
-  emails,
-  selectionColor,
-  handleCategoryClick
-}) => {
+const Categories = ({ user, emails, selectionColor, handleCategoryClick }) => {
   return (
     <div className="email_category">
       {Object.keys(emails).map(

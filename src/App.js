@@ -7,6 +7,7 @@ import Banner from "./components/Banner.js";
 export default function App() {
   // sessionStorage.removeItem("user");
   // sessionStorage.removeItem("emails");
+  const selectionColor = "lightcoral";
   const [banner, setBanner] = useState(
     {
       display: false,
@@ -206,6 +207,7 @@ export default function App() {
         <Dashboard
           user={user}
           emails={emails}
+          selectionColor={selectionColor}
           handleLogoutButton={handleLogoutButton}
           handleCategoryClick={handleCategoryClick}
           handleMailClick={handleMailClick}
