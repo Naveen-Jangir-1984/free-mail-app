@@ -104,12 +104,25 @@ export default function App() {
           sessionStorage.removeItem("emails");
         }
       })
-      .catch(error => setBanner({
-        display: true,
-        text: "server unavailable !",
-        color: "coral",
-        close: false,
-      }));
+      .catch(error => {
+        setBanner({
+          display: true,
+          text: "server unavailable !",
+          color: "coral",
+          close: false,
+        })
+        setUser({
+          id: "",
+          name: "",
+          email: "",
+          password: "",
+          isLogged: false,
+          lastSelectedCategory: "",
+        });
+        setEmails({});
+        sessionStorage.removeItem("user");
+        sessionStorage.removeItem("emails");
+      });
   };
   const handleCategoryClick = (category) => {
     fetch("http://localhost:8080/updateCategory", {
@@ -133,12 +146,25 @@ export default function App() {
           );
         }
       })
-      .catch(error => setBanner({
-        display: true,
-        text: "server unavailable !",
-        color: "coral",
-        close: false,
-      }));
+      .catch(error => {
+        setBanner({
+          display: true,
+          text: "server unavailable !",
+          color: "coral",
+          close: false,
+        })
+        setUser({
+          id: "",
+          name: "",
+          email: "",
+          password: "",
+          isLogged: false,
+          lastSelectedCategory: "",
+        });
+        setEmails({});
+        sessionStorage.removeItem("user");
+        sessionStorage.removeItem("emails");
+      });
   };
   const handleMailClick = (id, category) => {
     fetch("http://localhost:8080/updateEmail", {
@@ -160,12 +186,25 @@ export default function App() {
           sessionStorage.setItem("emails", JSON.stringify(data));
         }
       })
-      .catch(error => setBanner({
-        display: true,
-        text: "server unavailable !",
-        color: "coral",
-        close: false,
-      }));
+      .catch(error => {
+        setBanner({
+          display: true,
+          text: "server unavailable !",
+          color: "coral",
+          close: false,
+        })
+        setUser({
+          id: "",
+          name: "",
+          email: "",
+          password: "",
+          isLogged: false,
+          lastSelectedCategory: "",
+        });
+        setEmails({});
+        sessionStorage.removeItem("user");
+        sessionStorage.removeItem("emails");
+      });
   };
   const handleDeleteButton = (id) => {
     fetch("http://localhost:8080/deleteEmail", {
@@ -186,12 +225,25 @@ export default function App() {
           sessionStorage.setItem("emails", JSON.stringify(data));
         }
       })
-      .catch(error => setBanner({
-        display: true,
-        text: "server unavailable !",
-        color: "coral",
-        close: false,
-      }));
+      .catch(error => {
+        setBanner({
+          display: true,
+          text: "server unavailable !",
+          color: "coral",
+          close: false,
+        })
+        setUser({
+          id: "",
+          name: "",
+          email: "",
+          password: "",
+          isLogged: false,
+          lastSelectedCategory: "",
+        });
+        setEmails({});
+        sessionStorage.removeItem("user");
+        sessionStorage.removeItem("emails");
+      });
   };
   const handleBannerClose = () => {
     setBanner({
