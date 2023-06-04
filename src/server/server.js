@@ -192,11 +192,11 @@ app.post("/deleteEmail", (req, res) => {
       );
       const userEmails = {
         inbox: emails.inbox.filter((mail) => {
-          if (mail.to.filter((item) => item.id !== id).length) {
+          if (mail.to.filter((item) => item.id === id).length) {
             return mail;
           }
         }),
-        sent: emails.sent.filter((mail) => mail.from.id !== id),
+        sent: emails.sent.filter((mail) => mail.from.id === id),
       };
       res.end(user.length ? JSON.stringify(userEmails) : JSON.stringify({}));
     });

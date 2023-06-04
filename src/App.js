@@ -203,19 +203,19 @@ export default function App() {
   }
   return (
     <div className="App">
-      {user.isLogged ? (
-        <Dashboard
-          user={user}
-          emails={emails}
-          selectionColor={selectionColor}
-          handleLogoutButton={handleLogoutButton}
-          handleCategoryClick={handleCategoryClick}
-          handleMailClick={handleMailClick}
-          handleDeleteButton={handleDeleteButton}
-        />
-      ) : (
-          <Login handleLoginButton={handleLoginButton} error={error} />
-        )}
+      {
+        user.isLogged ? (
+          <Dashboard
+            user={user}
+            emails={emails}
+            selectionColor={selectionColor}
+            handleLogoutButton={handleLogoutButton}
+            handleCategoryClick={handleCategoryClick}
+            handleMailClick={handleMailClick}
+            handleDeleteButton={handleDeleteButton}
+          />
+        ) : <Login handleLoginButton={handleLoginButton} error={error} />
+      }
       <Banner banner={banner} handleBannerClose={handleBannerClose} />
     </div>
   );
