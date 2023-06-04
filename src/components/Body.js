@@ -17,7 +17,7 @@ const Body = ({ mail, selectionStyle, handleDeleteButton }) => {
         onClick={() => handleDeleteButton(mail.id)}
       >
         Delete Mail
-     </button>
+      </button>
     </>
   )
 }
