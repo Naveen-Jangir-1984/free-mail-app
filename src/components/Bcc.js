@@ -13,7 +13,7 @@ const Bcc = ({ mail, selectionStyle }) => {
             <span>{item.name}</span>{" "}
             <span style={bccStyle}>
               ({item.email})
-                </span>
+            </span>
           </span>{" "}
         </span>
       ))}

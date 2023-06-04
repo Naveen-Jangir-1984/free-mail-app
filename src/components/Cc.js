@@ -13,7 +13,7 @@ const Cc = ({ mail, selectionStyle }) => {
             <span>{item.name}</span>{" "}
             <span style={ccStyle}>
               ({item.email})
-                </span>
+            </span>
           </span>{" "}
         </span>
       ))}

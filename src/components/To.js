@@ -13,7 +13,7 @@ const To = ({ mail, selectionStyle }) => {
             <span>{item.name}</span>{" "}
             <span style={toStyle}>
               ({item.email})
-              </span>
+            </span>
           </span>{" "}
         </span>
       ))}
