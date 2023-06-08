@@ -7,6 +7,8 @@ import Banner from "./components/Banner.js";
 export default function App() {
   // sessionStorage.removeItem("user");
   // sessionStorage.removeItem("emails");
+  const sesionUser = JSON.parse(sessionStorage.getItem("user"));
+  const sessionEmails = JSON.parse(sessionStorage.getItem("emails"));
   const selectionColor = "yellow";
   const [banner, setBanner] = useState(
     {
@@ -29,9 +31,8 @@ export default function App() {
       ));
   }, [])
   const [user, setUser] = useState(
-    JSON.parse(sessionStorage.getItem("user")) !== null
-      ? JSON.parse(sessionStorage.getItem("user"))
-      : {
+    sesionUser !== null ?
+      sesionUser : {
         id: "",
         name: "",
         email: "",
@@ -42,9 +43,7 @@ export default function App() {
   );
   const [error, setError] = useState(false);
   const [emails, setEmails] = useState(
-    JSON.parse(sessionStorage.getItem("emails")) !== null
-      ? JSON.parse(sessionStorage.getItem("emails"))
-      : {}
+    sessionEmails !== null ? sessionEmails : {}
   );
   const handleLoginButton = (user) => {
     if (user.id === "" || user.password === "") {
