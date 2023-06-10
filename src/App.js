@@ -10,6 +10,20 @@ export default function App() {
   const sesionUser = JSON.parse(sessionStorage.getItem("user"));
   const sessionEmails = JSON.parse(sessionStorage.getItem("emails"));
   const selectionColor = "yellow";
+  const [user, setUser] = useState(
+    sesionUser !== null ?
+      sesionUser : {
+        id: "",
+        name: "",
+        email: "",
+        password: "",
+        isLogged: false,
+        lastSelectedCategory: "",
+      }
+  );
+  const [emails, setEmails] = useState(
+    sessionEmails !== null ? sessionEmails : {}
+  );
   const [banner, setBanner] = useState(
     {
       display: false,
@@ -18,6 +32,7 @@ export default function App() {
       close: false,
     }
   );
+  const [error, setError] = useState(false);
   useEffect(() => {
     fetch("http://localhost:8080/network")
       .then((res) => res.text())
@@ -30,21 +45,6 @@ export default function App() {
         }
       ));
   }, [])
-  const [user, setUser] = useState(
-    sesionUser !== null ?
-      sesionUser : {
-        id: "",
-        name: "",
-        email: "",
-        password: "",
-        isLogged: false,
-        lastSelectedCategory: "",
-      }
-  );
-  const [error, setError] = useState(false);
-  const [emails, setEmails] = useState(
-    sessionEmails !== null ? sessionEmails : {}
-  );
   const handleLoginButton = (user) => {
     if (user.id === "" || user.password === "") {
       setError(true);
@@ -254,6 +254,7 @@ export default function App() {
   }
   return (
     <div className="App">
+      <Banner banner={banner} handleBannerClose={handleBannerClose} />
       {
         user.isLogged ? (
           <Dashboard
@@ -267,7 +268,6 @@ export default function App() {
           />
         ) : <Login handleLoginButton={handleLoginButton} error={error} />
       }
-      <Banner banner={banner} handleBannerClose={handleBannerClose} />
     </div>
   );
 }

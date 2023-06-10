@@ -8,6 +8,7 @@ const Banner = ({ banner, handleBannerClose }) => {
     height: "100vh",
     borderRadius: "5px",
     backgroundColor: "rgba(250,250,250,0.8)",
+    transition: "1s",
   }
   const bannerStyle = {
     position: "absolute",
@@ -21,16 +22,19 @@ const Banner = ({ banner, handleBannerClose }) => {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    fontSize: "13px",
+    fontSize: "12px",
+    fontWeight: "bold",
   }
   const closeStyle = {
     position: "absolute",
-    top: "5px",
-    right: "15px",
+    top: "-3px",
+    right: "5px",
     width: "5px",
     height: "5px",
-    fontWeight: "bold",
+    fontSize: "20px",
     cursor: "pointer",
+    transform: "rotateZ(45deg)",
+    transformOrigin: "center",
   }
   return <div style={bannerLayout}>
     <div style={bannerStyle}>
@@ -39,7 +43,7 @@ const Banner = ({ banner, handleBannerClose }) => {
         style={closeStyle}
         onClick={() => handleBannerClose()}
       >
-        x
+        +
       </div>}
     </div>
   </div>
