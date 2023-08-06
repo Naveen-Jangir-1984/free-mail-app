@@ -3,8 +3,8 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-# trigger:
-# - main
+trigger:
+- main
 
 pool:
   vmImage: windows-latest
@@ -17,8 +17,10 @@ steps:
 
 - script: |
     npm install
-    # node .\src\server\server.js
     npm start
     TIMEOUT 10 /nobreak
+    cd .\src\server
+    node server.js
+    TIMEOUT 5 /nobreak
     npm test
   displayName: 'npm install dependencies, build and test'
