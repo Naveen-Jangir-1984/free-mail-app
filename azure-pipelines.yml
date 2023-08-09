@@ -34,7 +34,7 @@ jobs:
     displayName: 'start server'
 
 - job: app
-  dependsOn: server
+  dependsOn: dependencies
   pool:
     vmImage: 'windows-latest'
   steps:
