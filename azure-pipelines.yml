@@ -18,6 +18,7 @@ jobs:
     displayName: 'install node'
   
 - job: dependencies
+  dependsOn: node
   pool:
     vmImage: 'windows-latest'
   steps:
@@ -25,6 +26,7 @@ jobs:
     displayName: 'install dependencies'
 
 - job: server
+  dependsOn: dependencies
   pool:
     vmImage: 'windows-latest'
   steps:
@@ -32,6 +34,7 @@ jobs:
     displayName: 'start server'
 
 - job: app
+  dependsOn: server
   pool:
     vmImage: 'windows-latest'
   steps:
@@ -39,6 +42,7 @@ jobs:
     displayName: 'start app'
 
 - job: test
+  dependsOn: app
   pool:
     vmImage: 'windows-latest'
   steps:
