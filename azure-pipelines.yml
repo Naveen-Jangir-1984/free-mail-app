@@ -3,24 +3,44 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-trigger:
-- main
+trigger: none
 
-pool:
-  vmImage: windows-latest
+jobs:
+- job: node
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSource: 'spec'
+      versionSpec: '20.x'
+      checkLatest: true
+    displayName: 'install node'
+  
+- job: dependencies
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - script: npm install
+    displayName: 'install dependencies'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+- job: server
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - script: node .src\server\server.js
+    displayName: 'start server'
 
-- script: |
-    npm install
-    npm start
-    TIMEOUT 10 /nobreak
-    cd .\src\server
-    node server.js
-    TIMEOUT 5 /nobreak
-    npm test
-  displayName: 'npm install dependencies, build and test'
+- job: app
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - script: npm start
+    displayName: 'start app'
+
+- job: test
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - script: npm test
+    displayName: 'test app'
