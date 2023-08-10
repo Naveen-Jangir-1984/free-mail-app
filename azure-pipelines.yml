@@ -30,7 +30,7 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
-  - script: node .src\server\server.js
+  - script: node .\src\server\server.js
     displayName: 'start server'
 
 - job: app
