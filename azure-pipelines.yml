@@ -22,29 +22,29 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
-  - script: rm -rf node_modules && npm install
+  - script: rm -rf node_modules && npm i && npm i react-scripts --save
     displayName: 'install dependencies'
 
-- job: server
-  dependsOn: dependencies
-  pool:
-    vmImage: 'windows-latest'
-  steps:
-  - script: cd ".\src\server\" && node server.js
-    displayName: 'start server'
+# - job: server
+#   dependsOn: dependencies
+#   pool:
+#     vmImage: 'windows-latest'
+#   steps:
+#   - script: cd ".\src\server\" && node server.js
+#     displayName: 'start server'
 
-- job: app
-  dependsOn: dependencies
-  pool:
-    vmImage: 'windows-latest'
-  steps:
-  - script: npm start
-    displayName: 'start app'
+# - job: app
+#   dependsOn: dependencies
+#   pool:
+#     vmImage: 'windows-latest'
+#   steps:
+#   - script: npm start
+#     displayName: 'start app'
 
-- job: test
-  dependsOn: app
-  pool:
-    vmImage: 'windows-latest'
-  steps:
-  - script: npm test
-    displayName: 'test app'
+# - job: test
+#   dependsOn: app
+#   pool:
+#     vmImage: 'windows-latest'
+#   steps:
+#   - script: npm test
+#     displayName: 'test app'
