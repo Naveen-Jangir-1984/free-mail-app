@@ -22,7 +22,7 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
-  - script: npm install
+  - script: rm -rf node_modules && npm install
     displayName: 'install dependencies'
 
 - job: server
